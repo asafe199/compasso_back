@@ -96,12 +96,20 @@ public class ProductsControllerTest {
 
     @Test
     @DisplayName("search with Params [q, min_price, max_price] then returns a List of Products")
-    void deleteProduct(){
+    void searchProduct(){
         ResponseEntity<List<Products>> teste = productsController.search("TESTE", 10.0, 15.00);
         Assertions.assertThat(teste).isNotNull();
         Assertions.assertThat(teste.getBody()).isNotNull();
         Assertions.assertThat(teste.getStatusCode()).isEqualTo(HttpStatus.OK);
         Assertions.assertThat(teste.getBody()).isEqualTo(ProductsBeanTest.toEntity());
         Assertions.assertThat(teste.getBody()).hasSize(1);
+    }
+
+    @Test
+    @DisplayName("delete a Product")
+    void deleteProduct(){
+        ResponseEntity<Void> teste = productsController.delete(10L);
+        Assertions.assertThat(teste).isNotNull();
+        Assertions.assertThat(teste.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 }
