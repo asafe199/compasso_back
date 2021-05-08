@@ -1,0 +1,23 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: products-ms
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    url: jdbc:mysql://localhost:3306/compasso?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: root
+    initialization-mode: always
+    data: classpath:data.sql
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+
+
